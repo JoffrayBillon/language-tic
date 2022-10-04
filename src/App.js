@@ -10,7 +10,7 @@ function App() {
   return (
     <Container>
       <Typography variant="h1">Counter language tic</Typography>
-      <Typography variant="h2">{count} stick</Typography>
+      <Typography variant="h2">{count} point</Typography>
       <Button onClick={() => dispatch(increment())}>Add point</Button>
       <Container>
         <TextField
