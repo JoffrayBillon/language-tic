@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  ticList: [{times:0, value: "En faite"}],
+  ticList: [],
 };
 
 export const counterSlice = createSlice({
@@ -9,7 +9,7 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     addTic: (state, action) => {
-      state.ticList.push(action.payload);
+      state.ticList.push({ value: action.payload, times: 0 });
     },
     removeTic: (state, action) => {
       state.ticList.splice(action.payload, 1);
