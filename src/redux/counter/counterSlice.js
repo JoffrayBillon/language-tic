@@ -1,28 +1,32 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: 0,
-}
+  ticList: [{times:0, value: "En faite"}],
+};
 
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: "counter",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1
+    addTic: (state, action) => {
+      state.ticList.push(action.payload);
     },
-    decrement: (state) => {
-      state.value -= 1
+    removeTic: (state, action) => {
+      state.ticList.splice(action.payload, 1);
     },
-    set: (state, action) => {
-      state.value = parseInt(action.payload)
+    incrementTic: (state, action) => {
+      state.ticList[action.payload].times += 1;
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
+    decrementTic: (state, action) => {
+      state.ticList[action.payload].times -= 1;
+    },
+    setTic: (state, action) => {
+      state.ticList[action.payload.index].times = action.payload.value;
     },
   },
-})
+});
 
-export const { increment, decrement, incrementByAmount, set } = counterSlice.actions
+export const { addTic, removeTic, incrementTic, decrementTic, setTic } =
+  counterSlice.actions;
 
-export default counterSlice.reducer
+export default counterSlice.reducer;
